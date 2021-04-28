@@ -8,7 +8,7 @@ public class FindUniqueNumber {
 
     public static void main(String[] args) {
         FindUniqueNumber findUniqueNumber = new FindUniqueNumber();
-        int result = findUniqueNumber.solution3(new int[]{1, 2, 2, 3, 3});
+        int result = findUniqueNumber.solution1(new int[]{1, 2, 2, 3, 3});
         System.out.println(result == 1);
     }
 
@@ -17,14 +17,14 @@ public class FindUniqueNumber {
      * List에 들어있으면 List에서 빼내고, 없으면 넣는다.
      * 그럼 결과적으로 List에는 유일한 숫자만 들어있으니 해당 숫자를 꺼내서 리턴한다.
      *
-     * 시간 복잡도: O(n) * O(n) => O(n²)
+     * 시간 복잡도: O(n) * O(n) => O(n²) contains은 전체를 순환하기 때문에 for문인 셈
      * 공간 복잡도: O(n)
      */
     private int solution1(int[] numbers) {
         List<Integer> list = new ArrayList<>();
         for (int num : numbers) {
             if (list.contains(num)) {
-                list.remove((Integer) num);
+                list.remove((Integer) num); // 그냥 num으로 하면 index 인자로 되어 IndexOutOfBoundsException
             } else {
                 list.add(num);
             }

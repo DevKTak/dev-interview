@@ -6,7 +6,7 @@ public class TwoSum {
 
     public static void main(String[] args) {
         TwoSum twoSum = new TwoSum();
-        System.out.println(Arrays.toString(twoSum.solution(new int[]{2, 3, 5, 7}, 8)));
+        System.out.println(Arrays.toString(twoSum.solution2(new int[]{2, 3, 5, 7}, 8)));
     }
 
     /**
@@ -20,6 +20,20 @@ public class TwoSum {
      * @return
      */
     private int[] solution(int[] numbers, int target) {
+        for (int i = 0; i < numbers.length - 1; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (target - numbers[i] == numbers[j]) {
+                  return new int[]{i, j};
+                }
+            }
+        }
+
+        return null;
+    }
+
+    private int[] solution2(int[] numbers, int target) {
+
+
         return null;
     }
 

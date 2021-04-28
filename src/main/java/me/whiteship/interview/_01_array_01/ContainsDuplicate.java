@@ -1,10 +1,13 @@
 package me.whiteship.interview._01_array_01;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ContainsDuplicate {
 
     public static void main(String[] args) {
         ContainsDuplicate containsDuplicate = new ContainsDuplicate();
-        System.out.println(containsDuplicate.solution(new int[]{1, 2, 3, 4, 5}));
+        System.out.println(containsDuplicate.solution(new int[]{1, 2, 2, 4, 5}));
     }
 
     /**
@@ -13,6 +16,17 @@ public class ContainsDuplicate {
      *  예) 1 1 2 2 3 1 => true
      */
     private boolean solution(int[] numbers) {
+        Set<Integer> set = new HashSet();
+
+        for (int number : numbers) {
+            if (set.contains(number)) {
+
+                return true;
+            } else {
+                set.add(number);
+            }
+        }
+
         return false;
     }
 

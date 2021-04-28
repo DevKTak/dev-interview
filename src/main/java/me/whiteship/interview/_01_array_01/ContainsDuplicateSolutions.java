@@ -24,7 +24,7 @@ public class ContainsDuplicateSolutions {
     }
 
     private boolean solution2(int[] numbers) {
-        Arrays.sort(numbers);
+        Arrays.sort(numbers); // Quick sort O(NlogN), O(logN)
 
         for (int i = 0 ; i < numbers.length - 1 ; i++) {
             if (numbers[i] == numbers[i + 1]) {
@@ -35,10 +35,11 @@ public class ContainsDuplicateSolutions {
         return false;
     }
 
+    // O(N)
     private boolean solution3(int[] numbers) {
         Set<Integer> numberSet = new HashSet<>();
         for (int num : numbers) {
-            if (numberSet.contains(num)) {
+            if (numberSet.contains(num)) { // List와 다르게 Set의 contains는 시간복잡도가 O(1), Set은 중복 허용 안하기 때문
                 return true;
             } else {
                 numberSet.add(num);
