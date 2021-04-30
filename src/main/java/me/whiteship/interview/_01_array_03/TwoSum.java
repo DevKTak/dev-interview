@@ -1,12 +1,34 @@
 package me.whiteship.interview._01_array_03;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TwoSum {
 
     public static void main(String[] args) {
         TwoSum twoSum = new TwoSum();
-        System.out.println(Arrays.toString(twoSum.solution2(new int[]{2, 3, 5, 7}, 8)));
+        System.out.println(Arrays.toString(twoSum.solution3(new int[]{2, 3, 5, 7}, 10)));
+    }
+
+    private int[] solution3(int[] numbers, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < numbers.length; i++) {
+            map.put(numbers[i], i);
+        }
+
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                int findNum = target - numbers[i] - numbers[j];
+
+                if (map.containsKey(findNum) && map.get(findNum) != i && map.get(findNum) != j) {
+                    return new int[] {i, j, map.get(findNum)};
+                }
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -32,7 +54,16 @@ public class TwoSum {
     }
 
     private int[] solution2(int[] numbers, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
 
+        for (int i = 0; i < numbers.length; i++) {
+            int subVal = target - numbers[i];
+
+            if (map.containsKey(subVal) && map.get(subVal) != i) {
+                return new int[] {map.get(subVal), i};p
+            }
+            map.put(numbers[i], i);
+        }
 
         return null;
     }
