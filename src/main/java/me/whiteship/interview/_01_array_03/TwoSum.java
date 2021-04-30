@@ -11,6 +11,9 @@ public class TwoSum {
         System.out.println(Arrays.toString(twoSum.solution3(new int[]{2, 3, 5, 7}, 10)));
     }
 
+    /**
+     * 3개의 합
+     */
     private int[] solution3(int[] numbers, int target) {
         Map<Integer, Integer> map = new HashMap<>();
 
@@ -60,7 +63,7 @@ public class TwoSum {
             int subVal = target - numbers[i];
 
             if (map.containsKey(subVal) && map.get(subVal) != i) {
-                return new int[] {map.get(subVal), i};p
+                return new int[] {map.get(subVal), i};
             }
             map.put(numbers[i], i);
         }

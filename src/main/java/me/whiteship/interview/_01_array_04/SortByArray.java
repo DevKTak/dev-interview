@@ -21,6 +21,20 @@ public class SortByArray {
      * @return
      */
     private int[] solution(int[] numbers) {
+        boolean[] resultArr = new boolean[100];
+
+        for (int number : numbers) {
+            resultArr[number] = true;
+        }
+
+        int index = 0;
+
+        for (int i = 0; i < resultArr.length; i++) {
+            if (resultArr[i]) {
+                numbers[index++] = i;
+            }
+        }
+
         return numbers;
     }
 
